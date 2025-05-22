@@ -5,7 +5,7 @@
 package persistencia;
 
 import com.mycompany.gestordeorden.exceptions.NonexistentEntityException;
-import com.mycompany.gestordeorden.logica.Lineapedido;
+import com.mycompany.gestordeorden.logica.LineaPedido;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -35,7 +35,7 @@ public class LineapedidoJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Lineapedido lineapedido) {
+    public void create(LineaPedido lineapedido) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -49,7 +49,7 @@ public class LineapedidoJpaController implements Serializable {
         }
     }
 
-    public void edit(Lineapedido lineapedido) throws NonexistentEntityException, Exception {
+    public void edit(LineaPedido lineapedido) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -77,9 +77,9 @@ public class LineapedidoJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Lineapedido lineapedido;
+            LineaPedido lineapedido;
             try {
-                lineapedido = em.getReference(Lineapedido.class, id);
+                lineapedido = em.getReference(LineaPedido.class, id);
                 lineapedido.getIdentificador();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The lineapedido with id " + id + " no longer exists.", enfe);
@@ -93,19 +93,19 @@ public class LineapedidoJpaController implements Serializable {
         }
     }
 
-    public List<Lineapedido> findLineapedidoEntities() {
+    public List<LineaPedido> findLineapedidoEntities() {
         return findLineapedidoEntities(true, -1, -1);
     }
 
-    public List<Lineapedido> findLineapedidoEntities(int maxResults, int firstResult) {
+    public List<LineaPedido> findLineapedidoEntities(int maxResults, int firstResult) {
         return findLineapedidoEntities(false, maxResults, firstResult);
     }
 
-    private List<Lineapedido> findLineapedidoEntities(boolean all, int maxResults, int firstResult) {
+    private List<LineaPedido> findLineapedidoEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Lineapedido.class));
+            cq.select(cq.from(LineaPedido.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -117,10 +117,10 @@ public class LineapedidoJpaController implements Serializable {
         }
     }
 
-    public Lineapedido findLineapedido(int id) {
+    public LineaPedido findLineapedido(int id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Lineapedido.class, id);
+            return em.find(LineaPedido.class, id);
         } finally {
             em.close();
         }
@@ -130,7 +130,7 @@ public class LineapedidoJpaController implements Serializable {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Lineapedido> rt = cq.from(Lineapedido.class);
+            Root<LineaPedido> rt = cq.from(LineaPedido.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

@@ -1,0 +1,14 @@
+persistencia\ProductoJpaController.class
+com\mycompany\gestordeorden\logica\LineaPedido.class
+persistencia\LineapedidoJpaController.class
+com\mycompany\gestordeorden\exceptions\IllegalOrphanException.class
+com\mycompany\gestordeorden\exceptions\NonexistentEntityException.class
+com\mycompany\gestordeorden\logica\Orden_.class
+com\mycompany\gestordeorden\logica\Orden.class
+com\mycompany\gestordeorden\logica\LineaPedido_.class
+com\mycompany\gestordeorden\GestordeOrden.class
+com\mycompany\gestordeorden\logica\Producto.class
+com\mycompany\gestordeorden\logica\Producto_.class
+persistencia\OrdenJpaController.class
+com\mycompany\gestordeorden\exceptions\PreexistingEntityException.class
+persistencia\Controladordepersistencia.class
